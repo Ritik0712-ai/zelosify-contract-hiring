@@ -8,7 +8,7 @@ import {
   // updateVendorRequest,
   // uploadAttachment,
   // deleteAttachment,
-} from "../../controllers/controllers.js";
+} from "../../controllers/vendor/resourceRequest/vendorRequestController.js";
 
 /**
  * Router for vendor request management endpoints

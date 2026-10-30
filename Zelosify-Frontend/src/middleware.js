@@ -18,7 +18,7 @@ export function middleware(request) {
   const registrationToken = request.cookies.get("registration_token")?.value;
 
   // A user is considered authenticated if they have BOTH tokens
-  const isAuthenticated = !!accessToken && !!refreshToken;
+  const isAuthenticated = !!refreshToken;
   // A user is in registration process if they have the special token
   const isRegistering = !!registrationToken;
 
@@ -57,7 +57,7 @@ export function middleware(request) {
   }
 
   // Redirect logged in users away from public pages except during registration
-  if (isPublicPath && isAuthenticated) {
+  if (isPublicPath && isAuthenticated && userRole) {
     // Role-based redirection
     console.log("User Role = ", userRole);
     switch (userRole) {
@@ -75,7 +75,10 @@ export function middleware(request) {
 
       case "IT_VENDOR":
         console.log(`Redirecting IT_VENDOR to /vendor/payments`);
-        return NextResponse.redirect(new URL("/vendor/payments", request.url));
+        return NextResponse.redirect(new URL("/vendor/openings", request.url));
+
+      case "HIRING_MANAGER":
+        return NextResponse.redirect(new URL("/hiring-manager/openings", request.url));
 
       default:
         // Fallback for unknown roles or missing role - redirect to base user page
@@ -89,6 +92,12 @@ export function middleware(request) {
     return NextResponse.redirect(new URL("/login", request.url));
   }
 
+  if (isAuthenticated && userRole && path.startsWith("/vendor/openings") && userRole !== "IT_VENDOR") {
+    return NextResponse.redirect(new URL(userRole === "HIRING_MANAGER" ? "/hiring-manager/openings" : "/user", request.url));
+  }
+  if (isAuthenticated && userRole && path.startsWith("/hiring-manager") && userRole !== "HIRING_MANAGER") {
+    return NextResponse.redirect(new URL(userRole === "IT_VENDOR" ? "/vendor/openings" : "/user", request.url));
+  }
   return response;
 }
 
@@ -98,6 +107,7 @@ export const config = {
     // Protected routes
     "/user/:path*",
     "/vendor/:path*",
+    "/hiring-manager/:path*",
     "/business-user/:path*",
 
     // Public paths for redirect logic

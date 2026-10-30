@@ -1,0 +1,28 @@
+{
+  "liveGemini": true,
+  "liveS3": true,
+  "realKeycloak": true,
+  "automaticJobTrigger": true,
+  "managerOnlyResults": true,
+  "assignedManagerGuard": true,
+  "vendorAIFieldsAbsent": true,
+  "shortlist": true,
+  "submissionMs": 4023,
+  "totalMs": 105971,
+  "results": [
+    {
+      "mimeType": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+      "score": 1,
+      "category": "RECOMMENDED",
+      "confidence": 1,
+      "latencyMs": 35607
+    },
+    {
+      "mimeType": "application/pdf",
+      "score": 0.8333,
+      "category": "RECOMMENDED",
+      "confidence": 1,
+      "latencyMs": 35257
+    }
+  ]
+}

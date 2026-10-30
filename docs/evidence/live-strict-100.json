@@ -1,0 +1,722 @@
+{
+  "startedAt": "2026-10-30T19:36:03.844Z",
+  "finishedAt": "2026-10-30T19:38:35.293Z",
+  "model": "gemini-3.1-flash-lite",
+  "measurement": "Live Gemini function calls + real PDF/PPTX parsing; in-memory document loader. Excludes HTTP upload, S3, database, queue waiting. Unique synthetic job-related profiles; no real candidate data.",
+  "requested": 100,
+  "concurrency": 1,
+  "timeoutMs": 1500,
+  "completed": 100,
+  "skipped": 0,
+  "quotaReached": false,
+  "successful": 0,
+  "failed": 100,
+  "percentilePopulation": "successful profiles only; failures and skipped profiles excluded, so never interpret this as a passing full-sample SLA",
+  "p50Ms": null,
+  "p95Ms": null,
+  "maxMs": null,
+  "under1500": 0,
+  "slaMet": false,
+  "rows": [
+    {
+      "index": 0,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 1505,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 1,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 1503,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 2,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 1503,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 3,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 1501,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 4,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 1502,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 5,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 1502,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 6,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 1501,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 7,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 1611,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 8,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 1513,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 9,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 1505,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 10,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 1508,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 11,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 1521,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 12,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 1502,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 13,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 1753,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 14,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 1504,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 15,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 1506,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 16,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 1504,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 17,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 1505,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 18,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 1512,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 19,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 1504,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 20,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 1502,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 21,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 1503,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 22,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 1503,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 23,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 1505,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 24,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 1500,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 25,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 1503,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 26,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 1502,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 27,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 1505,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 28,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 1502,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 29,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 1502,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 30,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 1501,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 31,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 1503,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 32,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 1531,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 33,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 1502,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 34,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 1503,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 35,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 1502,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 36,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 1503,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 37,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 1502,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 38,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 1501,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 39,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 1503,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 40,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 1502,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 41,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 1502,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 42,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 1502,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 43,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 1504,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 44,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 1501,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 45,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 1502,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 46,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 1502,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 47,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 1503,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 48,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 1501,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 49,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 1502,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 50,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 1502,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 51,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 1540,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 52,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 1503,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 53,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 1502,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 54,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 1501,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 55,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 1502,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 56,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 1502,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 57,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 1503,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 58,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 1501,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 59,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 1503,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 60,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 1501,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 61,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 1501,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 62,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 1502,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 63,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 1502,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 64,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 1502,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 65,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 1502,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 66,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 1502,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 67,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 1502,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 68,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 1502,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 69,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 1501,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 70,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 1502,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 71,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 1502,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 72,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 1502,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 73,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 1502,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 74,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 1502,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 75,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 1502,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 76,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 1502,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 77,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 1502,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 78,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 1502,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 79,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 1501,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 80,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 1502,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 81,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 1504,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 82,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 1513,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 83,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 1502,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 84,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 1501,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 85,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 1502,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 86,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 1502,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 87,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 1517,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 88,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 1504,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 89,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 1501,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 90,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 1503,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 91,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 1513,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 92,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 1502,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 93,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 1502,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 94,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 1502,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 95,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 1502,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 96,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 1501,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 97,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 1502,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 98,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 1503,
+      "code": "PROCESSING_TIMEOUT"
+    },
+    {
+      "index": 99,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 1502,
+      "code": "PROCESSING_TIMEOUT"
+    }
+  ]
+}

@@ -109,14 +109,11 @@ export const verifyTOTP = async (
         user: userData,
       });
     } catch (error: any) {
-      console.error(
-        "❌ Error exchanging refresh token:",
-        error.response?.data || error.message
-      );
+      console.warn(JSON.stringify({event:'auth.totp.exchange.failed'}));
       res.status(401).json({ message: "Failed to authenticate" });
     }
   } catch (error) {
-    console.error("❌ Error verifying TOTP:", error);
+    console.error(JSON.stringify({event:'auth.totp.failed'}));
     res.status(500).json({ message: "Internal server error" });
   }
 };

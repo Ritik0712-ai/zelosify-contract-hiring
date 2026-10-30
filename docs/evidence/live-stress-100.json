@@ -1,0 +1,739 @@
+{
+  "startedAt": "2026-10-30T18:58:05.712Z",
+  "finishedAt": "2026-10-30T18:59:23.521Z",
+  "model": "gemini-3.1-flash-lite",
+  "measurement": "Live Gemini function calls + real PDF/PPTX parsing; in-memory document loader. Excludes HTTP upload, S3, database, queue waiting. Unique synthetic job-related profiles; no real candidate data.",
+  "requested": 100,
+  "concurrency": 2,
+  "timeoutMs": 60000,
+  "completed": 100,
+  "successful": 3,
+  "failed": 97,
+  "p50Ms": 17847,
+  "p95Ms": 31367,
+  "maxMs": 31367,
+  "under1500": 0,
+  "slaMet": false,
+  "rows": [
+    {
+      "index": 0,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 29362,
+      "code": "PARSING_TIMEOUT"
+    },
+    {
+      "index": 1,
+      "type": "PPTX",
+      "ok": true,
+      "latencyMs": 31367,
+      "score": 0.3667,
+      "tokens": {
+        "input": 6065,
+        "output": 173,
+        "thinking": 0
+      },
+      "tools": 6
+    },
+    {
+      "index": 2,
+      "type": "PDF",
+      "ok": true,
+      "latencyMs": 8671,
+      "score": 0.5,
+      "tokens": {
+        "input": 5912,
+        "output": 164,
+        "thinking": 0
+      },
+      "tools": 6
+    },
+    {
+      "index": 3,
+      "type": "PPTX",
+      "ok": true,
+      "latencyMs": 17847,
+      "score": 1,
+      "tokens": {
+        "input": 6170,
+        "output": 195,
+        "thinking": 0
+      },
+      "tools": 6
+    },
+    {
+      "index": 4,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 26134,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 5,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 373,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 6,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 439,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 7,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 374,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 8,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 387,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 9,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 337,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 10,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 386,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 11,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 394,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 12,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 438,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 13,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 328,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 14,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 392,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 15,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 406,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 16,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 391,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 17,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 348,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 18,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 396,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 19,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 378,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 20,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 383,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 21,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 418,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 22,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 428,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 23,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 296,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 24,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 404,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 25,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 442,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 26,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 461,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 27,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 460,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 28,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 294,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 29,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 432,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 30,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 296,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 31,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 394,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 32,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 309,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 33,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 405,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 34,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 306,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 35,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 433,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 36,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 354,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 37,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 286,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 38,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 439,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 39,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 413,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 40,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 388,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 41,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 303,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 42,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 482,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 43,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 466,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 44,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 291,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 45,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 424,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 46,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 430,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 47,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 377,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 48,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 347,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 49,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 273,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 50,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 380,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 51,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 499,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 52,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 322,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 53,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 414,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 54,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 403,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 55,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 648,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 56,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 741,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 57,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 403,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 58,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 529,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 59,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 370,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 60,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 329,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 61,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 442,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 62,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 371,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 63,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 352,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 64,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 321,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 65,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 341,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 66,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 343,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 67,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 357,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 68,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 351,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 69,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 353,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 70,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 413,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 71,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 311,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 72,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 502,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 73,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 517,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 74,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 432,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 75,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 406,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 76,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 282,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 77,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 287,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 78,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 393,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 79,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 398,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 80,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 322,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 81,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 322,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 82,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 372,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 83,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 355,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 84,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 395,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 85,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 283,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 86,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 383,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 87,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 289,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 88,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 317,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 89,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 412,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 90,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 388,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 91,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 416,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 92,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 331,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 93,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 390,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 94,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 300,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 95,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 325,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 96,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 404,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 97,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 290,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 98,
+      "type": "PDF",
+      "ok": false,
+      "latencyMs": 334,
+      "code": "PROVIDER_QUOTA"
+    },
+    {
+      "index": 99,
+      "type": "PPTX",
+      "ok": false,
+      "latencyMs": 417,
+      "code": "PROVIDER_QUOTA"
+    }
+  ],
+  "requestPacingMs": 0,
+  "percentilePopulation": "Only the 3 successful profiles; not a full-sample 100-profile P95. This run fails the SLA."
+}

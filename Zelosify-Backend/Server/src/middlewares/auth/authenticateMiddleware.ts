@@ -21,10 +21,6 @@ declare module "express-serve-static-core" {
   }
 }
 
-// Cache for user data
-const userCache = new Map();
-const USER_CACHE_TTL = 5 * 60 * 1000; // 5 minutes
-
 // 🔹 Middleware: Authenticate User & Refresh Token If Expired
 export const authenticateUser = async (
   req: Request,
@@ -56,15 +52,8 @@ export const authenticateUser = async (
         issuer: `${KEYCLOAK_URL}/realms/${REALM_NAME}`,
       }) as jwt.JwtPayload;
 
-      if (!verified || typeof verified !== "object") {
+      if (!verified || typeof verified !== "object" || typeof verified.sub !== "string") {
         throw new Error("Token verification failed");
-      }
-
-      // Check cache first
-      const cachedUser = userCache.get(verified.sub);
-      if (cachedUser && cachedUser.timestamp > Date.now() - USER_CACHE_TTL) {
-        req.user = cachedUser.data;
-        return next();
       }
 
       const user = await prisma.user.findUnique({
@@ -74,6 +63,7 @@ export const authenticateUser = async (
           username: true,
           email: true,
           role: true,
+          tenantId: true,
           department: true,
           provider: true,
           tenant: {
@@ -86,27 +76,20 @@ export const authenticateUser = async (
       });
 
       if (!user) {
-        console.log(`❌ User not found: ${verified.sub}`);
+        console.warn(JSON.stringify({event:'auth.user.unavailable'}));
         res.status(401).json({ message: "User not found" });
         return;
       }
 
-      // Update cache
-      userCache.set(verified.sub, {
-        data: user,
-        timestamp: Date.now(),
-      });
-      console.log("Authenticate Middleware Passed ✅ : ", user);
-
       req.user = user;
       next();
     } catch (error) {
-      console.error("Token verification failed:", error);
+      console.warn(JSON.stringify({event:'auth.token.invalid'}));
       res.status(401).json({ message: "Invalid or expired token" });
       return;
     }
   } catch (error) {
-    console.error("Authentication error:", error);
+    console.error(JSON.stringify({event:'auth.failed'}));
     res.status(500).json({ message: "Internal server error" });
   }
 };

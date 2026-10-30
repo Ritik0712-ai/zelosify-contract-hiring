@@ -2,6 +2,7 @@ import {
   LogOut,
   Settings,
   CreditCard,
+  BriefcaseBusiness,
   Headset,
   Smile,
   Scale3DIcon,
@@ -42,8 +43,11 @@ const getOverviewItemsByRole = (role) => {
     // For IT_VENDOR
     case "IT_VENDOR":
       return [
-        { title: "Payments", href: "/vendor/payments", icon: CreditCard },
+        { title: "Openings", href: "/vendor/openings", icon: BriefcaseBusiness },
       ];
+
+    case "HIRING_MANAGER":
+      return [{ title: "Openings", href: "/hiring-manager/openings", icon: BriefcaseBusiness }];
 
     default:
       return [];

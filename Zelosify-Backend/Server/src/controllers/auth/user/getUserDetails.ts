@@ -30,7 +30,7 @@ export const getUserDetails = async (
     });
 
     if (!user) {
-      console.log(`❌ User not found: ${userId}`);
+      console.warn(JSON.stringify({event:'auth.user.unavailable'}));
       res.status(401).json({ message: "User not found" });
       return;
     }
@@ -38,7 +38,7 @@ export const getUserDetails = async (
     // Respond with the user details
     res.status(200).json(user);
   } catch (error) {
-    console.error("Error during user retrieval:", error);
+    console.error(JSON.stringify({event:'auth.user.failed'}));
     res.status(500).json({ message: "Internal server error" });
   }
 };

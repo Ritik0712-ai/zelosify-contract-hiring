@@ -1,4 +1,6 @@
 # Logs
+.DS_Store
+.local/
 logs
 *.log
 npm-debug.log*
@@ -143,3 +145,6 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+
+# Machine-specific AWS assistant guidance remains local.
+/AGENTS.md

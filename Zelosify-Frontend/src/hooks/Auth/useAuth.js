@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter, usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {
   checkAuthStatus,
   signOut,
@@ -31,18 +31,7 @@ const useAuth = () => {
   const pathname = usePathname();
 
   // Helper function to check if current path is an auth page
-  const isAuthPage = () => {
-    if (!pathname) return false;
-    return !pathname.includes("/user");
-  };
-
-  // Check if we need to load user data from localStorage on initial mount
-  useEffect(() => {
-    // Skip auth check completely on auth pages
-    if (!user && !isAuthPage()) {
-      handleCheckAuthStatus();
-    }
-  }, [pathname]);
+  const isAuthPage = !pathname || ["/", "/login", "/register", "/setup-totp"].includes(pathname);
 
   /**
    * Dispatches the checkAuthStatus action to verify user authentication status.
@@ -50,12 +39,12 @@ const useAuth = () => {
    * @param {boolean} options.suppressErrors - Whether to suppress common errors like "No authentication tokens found"
    * @param {boolean} options.forceCheck - Force check even on auth pages
    */
-  const handleCheckAuthStatus = (options = {}) => {
+  const handleCheckAuthStatus = useCallback((options = {}) => {
     const { suppressErrors = false, forceCheck = false } = options;
 
     // Always pass the current path and auth page status
     const authOptions = {
-      isAuthPage: isAuthPage() && !forceCheck,
+      isAuthPage: isAuthPage && !forceCheck,
       pathname,
     };
 
@@ -84,7 +73,11 @@ const useAuth = () => {
       // Normal behavior - let Redux handle the error state
       dispatch(checkAuthStatus(authOptions));
     }
-  };
+  }, [dispatch, isAuthPage, pathname]);
+
+  useEffect(() => {
+    if (!isAuthPage) handleCheckAuthStatus({ suppressErrors: true });
+  }, [isAuthPage, handleCheckAuthStatus]);
 
   /**
    * Dispatches the loginWithCredentials action to verify login credentials.
@@ -193,7 +186,7 @@ const useAuth = () => {
    */
   const getTenantId = () => {
     if (!user) return "";
-    return user.tenant.tenantId;
+    return user.tenant?.tenantId || "";
   };
 
   /**

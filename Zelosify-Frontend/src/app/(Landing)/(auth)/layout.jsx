@@ -17,4 +17,6 @@ const AuthLayout = memo(({ children }) => (
   </div>
 ));
 
+AuthLayout.displayName = "AuthLayout";
+
 export default AuthLayout;

@@ -11,6 +11,7 @@ let clientSecretExpiry: number = 0;
 const CLIENT_SECRET_TTL = 3600 * 1000; // 1 hour
 
 export async function getKeycloakClientSecret(): Promise<string> {
+  if (process.env.KEYCLOAK_CLIENT_SECRET) return process.env.KEYCLOAK_CLIENT_SECRET;
   try {
     // Return cached secret if valid
     if (cachedClientSecret && Date.now() < clientSecretExpiry) {
@@ -66,7 +67,7 @@ export async function getKeycloakClientSecret(): Promise<string> {
 
     return secretResponse.data.value;
   } catch (error) {
-    console.error("Failed to retrieve Keycloak client secret:", error);
+    console.error(JSON.stringify({event:'auth.configuration.failed'}));
     throw new Error("Failed to retrieve Keycloak client secret");
   }
 }

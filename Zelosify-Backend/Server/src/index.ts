@@ -1,10 +1,9 @@
 // Core Express and Node.js libraries
 import express from "express";
-import dotenv from "dotenv";
+import "dotenv/config";
 
 // Authentication and session management
 import { setupKeycloakConfig } from "./config/keycloak/keycloak.js";
-import session from "express-session";
 
 // Security and middleware libraries
 import cors from "cors";
@@ -16,12 +15,14 @@ import connectPrisma from "./utils/prisma/connectPrisma.js";
 
 // Application route handlers organized by feature domain
 import authRoutes from "./routers/auth/authRoute.js";
-import awsRouter from "./routers/aws/awsRoute.js";
 import vendorRoutes from "./routers/vendor/vendorRoutes.js";
 import hiringManagerRoutes from "./routers/hiring/hiringManagerRoutes.js";
+import {contractRoutes} from "./routers/hiring/contractRoutes.js";
 
+import prisma from './config/prisma/prisma.js';
+import {S3DocumentStore} from './services/hiring/storage.js';
+import {RecommendationWorker} from './services/recommendation/worker.js';
 // Load environment variables from .env file
-dotenv.config();
 
 // Initialize Express application
 const app = express();
@@ -33,11 +34,15 @@ const app = express();
 async function startServer() {
   try {
     // Initialize Keycloak authentication and session store
-    const { keycloak, memoryStore } = await setupKeycloakConfig();
+    await setupKeycloakConfig();
 
     // Establish database connections
     await connectPrisma();
 
+    if(process.env.AI_WORKER_ENABLED!=='false'){
+      const worker=new RecommendationWorker(prisma,new S3DocumentStore());worker.start();
+      for(const signal of ['SIGINT','SIGTERM'] as const)process.once(signal,()=>{void worker.stop().finally(()=>process.exit(0));});
+    }
     // Security middleware for headers and protection
     app.use(helmet());
     app.use(express.json());
@@ -47,7 +52,7 @@ async function startServer() {
     // Allows requests from specified frontend origins during development
     app.use(
       cors({
-        origin: ["http://localhost:5173"],
+        origin: ["http://localhost:5173", "http://127.0.0.1:5173"],
         credentials: true,
         methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
         allowedHeaders: ["Content-Type", "Authorization", "Cookie"],
@@ -55,26 +60,21 @@ async function startServer() {
       })
     );
 
-    // Session configuration for Keycloak authentication
-    app.use(
-      session({
-        secret: process.env.SESSION_SECRET || "my-secret",
-        resave: false,
-        saveUninitialized: true,
-        store: memoryStore,
-      })
-    );
-
-    // Initialize Keycloak middleware for authentication
-    app.use(keycloak.middleware());
+    app.use((req,res,next)=>{
+      const started=performance.now(), path=req.path;
+      res.on('finish',()=>console.log(JSON.stringify({timestamp:new Date().toISOString(),event:'http.request',method:req.method,path,status:res.statusCode,latencyMs:Math.round(performance.now()-started)})));
+      next();
+    });
 
     // Mount API route handlers with versioned endpoints
 
     // User authentication and authorization
     app.use("/api/v1/auth", authRoutes);
 
-    // AWS integration
-    app.use("/api/v1/aws", awsRouter);
+    // Files are exposed only through the tenant-scoped hiring routes.
+
+    app.use(["/api/vendor", "/api/v1/vendor"], contractRoutes("IT_VENDOR"));
+    app.use(["/api/hiring-manager", "/api/v1/hiring-manager"], contractRoutes("HIRING_MANAGER"));
 
     // Handles vendor-specific routes
     app.use("/api/v1/vendor", vendorRoutes);
@@ -82,16 +82,6 @@ async function startServer() {
     // Hiring manager routes
     app.use("/api/v1/hiring-manager", hiringManagerRoutes);
 
-    // Request debugging middleware - logs all incoming requests
-    app.use((req, _, next) => {
-      console.log("[Server] Incoming request:", {
-        method: req.method,
-        path: req.path,
-        body: req.body,
-        headers: req.headers,
-      });
-      next();
-    });
 
     // Health check endpoint
     app.get("/", (_, res) => {
@@ -107,23 +97,22 @@ async function startServer() {
         res: express.Response,
         next: express.NextFunction
       ) => {
-        console.error("Global error handler:", err);
-        res.status(500).json({
-          error: "Internal Server Error",
-          message: err.message,
-        });
+        const status=(err as any).status;
+        if(status===400||status===413){res.status(status).json({message:status===413?"Request is too large.":"Invalid request body."});return;}
+        console.error(JSON.stringify({event:"http.unhandled_error",error:err.name}));
+        res.status(500).json({message:"Internal server error."});
       }
     );
 
     // Start the server on specified port
     const PORT = process.env.PORT || 5000;
 
-    app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT}...`);
+    app.listen(Number(PORT), process.env.HOST || "127.0.0.1", () => {
+      console.log(JSON.stringify({event:'server.listening',port:PORT}));
     });
   } catch (error) {
     // Handle server initialization errors
-    console.error("Error during server initialization:", error);
+    console.error(JSON.stringify({event:'server.start.failed',error:error instanceof Error?error.name:'UnknownError'}));
     process.exit(1);
   }
 }

@@ -18,26 +18,23 @@ axiosInstance.interceptors.request.use(
   }
 );
 
-// Add response interceptor for logging
+// One refresh request is shared by concurrent API requests after access-token expiry.
+let refreshInFlight = null;
 axiosInstance.interceptors.response.use(
-  (response) => {
-    console.log(
-      `API Response [${
-        response.status
-      }]: ${response.config.method.toUpperCase()} ${response.config.url}`
-    );
-    return response;
-  },
-  (error) => {
-    if (error.response) {
-      console.error(
-        `API Error [${
-          error.response.status
-        }]: ${error.config.method.toUpperCase()} ${error.config.url}`,
-        error.response.data
-      );
-    } else {
-      console.error(`API Error: ${error.message}`);
+  response => response,
+  async error => {
+    const request = error.config;
+    if (error.response?.status === 401 && request && !request._sessionRetried &&
+        !/^\/auth\/(verify-login|verify-totp|refresh|register)(\/|$)/.test(String(request.url))) {
+      request._sessionRetried = true;
+      try {
+        if (!refreshInFlight) {
+          refreshInFlight = axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth/refresh`, {}, {withCredentials:true})
+            .finally(() => { refreshInFlight = null; });
+        }
+        await refreshInFlight;
+        return axiosInstance(request);
+      } catch { /* The screen handles a session that cannot be renewed. */ }
     }
     return Promise.reject(error);
   }

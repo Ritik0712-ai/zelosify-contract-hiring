@@ -3,17 +3,6 @@ import axiosInstance from "@/utils/Axios/AxiosInstance";
 import { clearAuthData } from "@/utils/Auth/authUtils";
 
 // Helper functions for localStorage
-const loadUserFromStorage = () => {
-  if (typeof window === "undefined") return null; // Handle SSR
-  try {
-    const storedUser = localStorage.getItem("zelosify_user");
-    return storedUser ? JSON.parse(storedUser) : null;
-  } catch (error) {
-    console.error("Error loading user from localStorage:", error);
-    return null;
-  }
-};
-
 const saveUserToStorage = (user) => {
   if (typeof window === "undefined") return; // Handle SSR
   try {
@@ -28,7 +17,7 @@ const saveUserToStorage = (user) => {
 };
 
 const initialState = {
-  user: loadUserFromStorage(),
+  user: null,
   loading: false,
   error: null,
   showSignoutConfirmation: false,
@@ -49,7 +38,7 @@ export const checkAuthStatus = createAsyncThunk(
 
     try {
       // Skip auth check on auth pages completely
-      if (isAuthPage || !pathname.includes("/user")) {
+      if (isAuthPage) {
         return null;
       }
 
@@ -59,15 +48,6 @@ export const checkAuthStatus = createAsyncThunk(
       }
 
       authCheckInProgress = true;
-
-      // Try to load from storage first
-      const storedUser = loadUserFromStorage();
-
-      // If we have user data in localStorage, use it and don't make an API call
-      if (storedUser) {
-        authCheckInProgress = false;
-        return storedUser;
-      }
 
       // No user in localStorage, make a single API call to fetch user data
       try {
@@ -188,9 +168,12 @@ const authSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
-      .addCase(loginWithCredentials.fulfilled, (state) => {
+      .addCase(loginWithCredentials.fulfilled, (state, action) => {
         state.loading = false;
-        // Don't set user yet, as we need TOTP verification
+        if (action.payload.user) {
+          state.user = action.payload.user;
+          saveUserToStorage(action.payload.user);
+        }
       })
       .addCase(loginWithCredentials.rejected, (state, action) => {
         state.loading = false;

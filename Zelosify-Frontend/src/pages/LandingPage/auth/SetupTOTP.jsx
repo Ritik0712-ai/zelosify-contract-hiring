@@ -143,11 +143,11 @@ export default function SetupTOTP() {
               </ul>
             </div>
             <p className="text-sm">
-              2. Once scanned, you'll see a 6-digit code that changes every 30
+              2. Once scanned, you&apos;ll see a 6-digit code that changes every 30
               seconds.
             </p>
             <p className="text-sm">
-              3. You'll need this code every time you sign in.
+              3. You&apos;ll need this code every time you sign in.
             </p>
             <div className="bg-yellow-50 dark:bg-yellow-900/30 p-4 rounded-lg mt-4">
               <p className="text-sm font-medium text-yellow-800 dark:text-yellow-300">

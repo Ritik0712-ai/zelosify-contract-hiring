@@ -2,11 +2,6 @@
 
 import { useCallback, useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { FcGoogle } from "react-icons/fc";
-import { BsMicrosoft } from "react-icons/bs";
-import SocialButton from "@/components/UI/SocialButton";
-import Link from "next/link";
-import axiosInstance from "@/utils/Axios/AxiosInstance";
 import useAuth from "@/hooks/Auth/useAuth";
 import BoxHeader from "./BoxHeader";
 import LoginForm from "./LoginForm";
@@ -66,13 +61,13 @@ export default function LoginLayout() {
       if (loginStage === "credentials") {
         // Step 1: Verify username/email and password
         try {
-          console.log("Verifying credentials for:", formData.usernameOrEmail);
+
           const resultAction = await handleLogin({
             usernameOrEmail: formData.usernameOrEmail,
             password: formData.password,
           });
 
-          console.log("Verify login response:", resultAction);
+
           if (
             resultAction.message ===
             "Login verified. Please enter your TOTP code."
@@ -91,7 +86,7 @@ export default function LoginLayout() {
       } else if (loginStage === "totp") {
         // Step 2: Verify TOTP code
         try {
-          console.log("Submitting TOTP code:", formData.totp);
+
           const resultAction = await handleVerifyTOTP({
             totp: formData.totp,
           });
@@ -140,30 +135,6 @@ export default function LoginLayout() {
     [formData, loginStage, handleLogin, handleVerifyTOTP]
   );
 
-  const handleGoogleLogin = useCallback(async () => {
-    try {
-      const resp = await axiosInstance.get("/auth/google/login");
-
-      window.location.href = resp.data.authUrl;
-    } catch (err) {
-      console.error(err.message);
-
-      setError({ general: "Failed to initiate Google login" });
-    }
-  }, []);
-
-  const handleMicrosoftLogin = useCallback(async () => {
-    try {
-      const resp = await axiosInstance.get("/auth/microsoft/login");
-
-      window.location.href = resp.data.authUrl;
-    } catch (err) {
-      console.error(err.message);
-
-      setError({ general: "Failed to initiate Microsoft login" });
-    }
-  }, []);
-
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -193,43 +164,7 @@ export default function LoginLayout() {
         setLoginStage={setLoginStage}
       />
 
-      <div className="mt-6 space-y-4">
-        <div className="relative">
-          <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-gray-300 dark:border-gray-700"></div>
-          </div>
-          <div className="relative flex justify-center text-sm">
-            <span className="px-2 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400">
-              Or continue with
-            </span>
-          </div>
-        </div>
-
-        <div className="space-y-2">
-          <SocialButton
-            icon={FcGoogle}
-            onClick={handleGoogleLogin}
-            label="Sign in with Google"
-          />
-          <SocialButton
-            icon={BsMicrosoft}
-            onClick={handleMicrosoftLogin}
-            label="Sign in with Microsoft"
-          />
-        </div>
-      </div>
-
-      <div className="mt-6 text-center">
-        <p className="text-sm text-gray-600 dark:text-gray-400">
-          Don't have an account?{" "}
-          <Link
-            href="/register"
-            className="font-medium text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300"
-          >
-            Sign up
-          </Link>
-        </p>
-      </div>
+      <p className="mt-6 text-center text-sm text-gray-600 dark:text-gray-400">Access is provided by your organization. Contact your administrator if you need an account.</p>
     </motion.div>
   );
 }
