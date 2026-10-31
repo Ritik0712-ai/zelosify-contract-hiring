@@ -11,6 +11,8 @@ A multi-tenant vendor-to-hiring-manager workflow built on the supplied Zelosify 
 - Real Keycloak, private S3, PDF/PPTX, Gemini tool calling and manager decisions are verified.
 - **Performance gate failed:** no profile completed in the strict 1,500 ms / 100-profile run. The historical burst test completed 3/100, with 96 provider quota errors and one parser timeout. Passing code tests are not a passing provider SLA.
 
+**[Watch/download the continuous UI demo (5:30)](https://github.com/Ritik0712-ai/zelosify-contract-hiring/releases/tag/demo-v1)** — one unedited take with real Gemini results and fictional resumes.
+
 See [step-four status](docs/STEP_FOUR.md), [architecture](docs/ARCHITECTURE.md), [performance evidence](docs/evidence/), and the [continuous-demo walkthrough](docs/DEMO_WALKTHROUGH.md).
 
 ## Prerequisites

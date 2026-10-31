@@ -15,3 +15,7 @@ Before recording, verify that the local frontend, backend and identity service a
 The displayed processing times are real. The 1.5-second requirement is not met; this limitation must remain disclosed in the repository and submission. The demonstration is of working development functionality, not a passing performance claim.
 
 Demo logins: `vendor.demo` and `manager.demo`. Their generated password is in the ignored local configuration. Do not reveal it, API keys, cookies, personal bookmarks or unrelated windows in the recording.
+
+## Published take
+
+[Continuous UI demo (5:30)](https://github.com/Ritik0712-ai/zelosify-contract-hiring/releases/tag/demo-v1). The original MOV was preserved locally; the published MP4 copies its encoded video stream unchanged. There are no cuts, speed changes or audio. The last portion remains on the final decision view while the recorder is stopped. Verification metadata is in `docs/evidence/demo-verification.json`.

@@ -1,0 +1,15 @@
+{
+  "durationSeconds": 329.98,
+  "maxAllowedSeconds": 360,
+  "audioTracks": 0,
+  "continuousTake": true,
+  "edited": false,
+  "originalSha256": "c8840587f5455a4d7590fffb2ea43a43024002177eead25ea32210e14e959647",
+  "mp4Sha256": "048e55cedbcd7729b228b0c4a1bc296ddd0822a2903ca389751f058ae15852e6",
+  "videoStreamHashIdentical": true,
+  "videoStreamHash": "SHA256=909aac5a46771507434dc880bc728537e504c5b5070bdf6955a35d4d1830047b",
+  "containerConversion": "H264 stream copy; no cuts or speed changes",
+  "mp4Bytes": 77359750,
+  "functionalWalkthroughSecondsApprox": 176,
+  "review": "sampled timeline and document previews; final states match live UI"
+}

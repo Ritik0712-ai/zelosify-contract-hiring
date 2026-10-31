@@ -1,6 +1,6 @@
 # Verification and submission status
 
-The functional development build is implemented and published. **The evaluation is not yet fully complete:** the continuous demo and final email remain pending, and the measured performance requirements fail.
+Functional verification, documentation, the public source repository and the continuous demo are complete. **Formal email submission remains pending review. The measured performance requirements fail; this is not a claim of full evaluation compliance.**
 
 ## Source and verification
 
@@ -26,14 +26,17 @@ A resumed recording attempt encountered an expired AWS developer session before 
 
 The required recording must be a single actual UI walkthrough, no longer than six minutes, without cuts or speed changes. Only fictional resumes may appear. The [walkthrough](DEMO_WALKTHROUGH.md) describes the vendor upload, previews, soft deletion and manager recommendation/decision flow.
 
-No finished recording or public demo URL has been verified yet. Setup recordings are excluded from deliverables. No submission email has been sent. The final email must include the real repository and demo links and disclose the failed performance gates.
+The finished [continuous demo and verification metadata](https://github.com/Ritik0712-ai/zelosify-contract-hiring/releases/tag/demo-v1) are published. [Direct MP4 download](https://github.com/Ritik0712-ai/zelosify-contract-hiring/releases/download/demo-v1/Zelosify-Continuous-Demo.mp4). Anonymous access returned HTTP 200; the uploaded size and SHA-256 match the local file.
+
+The original take lasts **329.98 seconds (5:30)**, below six minutes, and contains no audio track. Metadata and sampled frames across the timeline verified vendor sign-in, batch upload, both previews, soft deletion, manager scope, real results, decisions and dark mode. The MP4 is a container conversion with the original H.264 stream copied unchanged; stream hashes match the original MOV. There are no cuts or speed changes. Setup/failed takes are excluded. See [video verification](evidence/demo-verification.json).
+
+The recorded PDF/PPTX results show 100%/83% match scores and 31.17/36.29 seconds of processing respectively. The demo uses the approved development timeout and does not satisfy the strict SLA. No submission email has been sent. The final email must include both links and disclose the failed performance gates.
 
 Assignment recipient: `sabeshragav@zelosify.com`. Deadline from the assignment email: **2 November 2026 at 21:34:01 IST**.
 
 ## Remaining acceptance work
 
-1. Record, inspect and publish the continuous demo; verify anonymous access to its link.
-2. Resolve or obtain an explicit evaluation exception for the performance gaps; never describe the current results as a passing SLA.
-3. Review the final email containing both links and the limitations, then send it when authorized.
+1. Review the final email containing both public links and the limitations, then send it when authorized.
+2. Resolve or obtain an explicit evaluation exception for the performance gaps before claiming compliance; never describe the current results as a passing SLA.
 
 The service remains a local development build. No production deployment is claimed or required by the supplied submission instructions.
