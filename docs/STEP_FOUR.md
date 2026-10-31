@@ -28,9 +28,13 @@ The required recording must be a single actual UI walkthrough, no longer than si
 
 The finished [continuous demo and verification metadata](https://github.com/Ritik0712-ai/zelosify-contract-hiring/releases/tag/demo-v1) are published. [Direct MP4 download](https://github.com/Ritik0712-ai/zelosify-contract-hiring/releases/download/demo-v1/Zelosify-Continuous-Demo.mp4). Anonymous access returned HTTP 200; the uploaded size and SHA-256 match the local file.
 
-The original take lasts **329.98 seconds (5:30)**, below six minutes, and contains no audio track. Metadata and sampled frames across the timeline verified vendor sign-in, batch upload, both previews, soft deletion, manager scope, real results, decisions and dark mode. The MP4 is a container conversion with the original H.264 stream copied unchanged; stream hashes match the original MOV. There are no cuts or speed changes. Setup/failed takes are excluded. See [video verification](evidence/demo-verification.json).
+The current take is Ritik’s manual recording, `Screen Recording 2026-11-01 at 00.51.27.mov`. It lasts **212.50 seconds (3 minutes 32.5 seconds)**, below six minutes, and contains no audio track. The previous automated walkthrough has been replaced at the same public demo link.
 
-The recorded PDF/PPTX results show 100%/83% match scores and 31.17/36.29 seconds of processing respectively. The demo uses the approved development timeout and does not satisfy the strict SLA. No submission email has been sent. The final email must include both links and disclose the failed performance gates.
+Metadata and sampled frames across the timeline verified vendor and manager sign-in, opening details and assignment scope, PDF/PPTX batch upload, queued/running AI states followed by real recommendations, PDF preview, manager shortlist/reject decisions and the vendor view after decisions. The recording excludes browser tabs and the address bar; passwords remain masked in reviewed login frames. This take is not used as evidence for PPTX preview, soft-delete confirmation or dark-mode switching; those features were verified separately.
+
+The MP4 is a container conversion with the original H.264 stream copied unchanged; encoded video stream hashes match the original MOV. There are no added cuts or speed changes. Setup/failed and superseded takes are excluded from the current submission package. See [video verification](evidence/demo-verification.json).
+
+The demo shows actual processing waits and uses the approved development timeout. It does not satisfy the strict SLA. The unsent Gmail draft references this replacement demo and its new duration; no submission email has been sent. It retains the disclosure of failed performance gates.
 
 Assignment recipient: `sabeshragav@zelosify.com`. Deadline from the assignment email: **2 November 2026 at 21:34:01 IST**.
 

@@ -2,7 +2,7 @@
 
 A multi-tenant vendor-to-hiring-manager workflow built on the supplied Zelosify codebase. The development workflow includes openings, secure PDF/PPTX submissions, previews, soft deletion, manager decisions and a real Gemini tool-calling recommendation agent. The functional workflow is live verified, but the assignment's latency and 100-successful-profile provider benchmark gates are not met. See `docs/STEP_THREE.md` for measured results and limits.
 
-![Manager workspace](docs/images/manager-results.png)
+![Manager workspace](docs/images/final-manager-decisions.png)
 
 ## Verification status
 
@@ -11,7 +11,7 @@ A multi-tenant vendor-to-hiring-manager workflow built on the supplied Zelosify 
 - Real Keycloak, private S3, PDF/PPTX, Gemini tool calling and manager decisions are verified.
 - **Performance gate failed:** no profile completed in the strict 1,500 ms / 100-profile run. The historical burst test completed 3/100, with 96 provider quota errors and one parser timeout. Passing code tests are not a passing provider SLA.
 
-**[Watch/download the continuous UI demo (5:30)](https://github.com/Ritik0712-ai/zelosify-contract-hiring/releases/tag/demo-v1)** — one unedited take with real Gemini results and fictional resumes.
+**[Watch/download the manual UI demo (3 min 32.5 sec)](https://github.com/Ritik0712-ai/zelosify-contract-hiring/releases/tag/demo-v1)** — Ritik’s new manual recording, with real Gemini results and fictional resumes.
 
 See [step-four status](docs/STEP_FOUR.md), [architecture](docs/ARCHITECTURE.md), [performance evidence](docs/evidence/), and the [continuous-demo walkthrough](docs/DEMO_WALKTHROUGH.md).
 
