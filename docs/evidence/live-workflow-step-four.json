@@ -7,22 +7,22 @@
   "assignedManagerGuard": true,
   "vendorAIFieldsAbsent": true,
   "shortlist": true,
-  "submissionMs": 8007,
-  "totalMs": 78404,
+  "submissionMs": 3603,
+  "totalMs": 94853,
   "results": [
     {
       "mimeType": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
       "score": 1,
       "category": "RECOMMENDED",
       "confidence": 1,
-      "latencyMs": 34808
+      "latencyMs": 35166
     },
     {
       "mimeType": "application/pdf",
       "score": 0.8333,
       "category": "RECOMMENDED",
       "confidence": 1,
-      "latencyMs": 32674
+      "latencyMs": 52545
     }
   ]
 }
