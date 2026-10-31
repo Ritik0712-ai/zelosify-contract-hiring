@@ -11,7 +11,7 @@ A multi-tenant vendor-to-hiring-manager workflow built on the supplied Zelosify 
 - Real Keycloak, private S3, PDF/PPTX, Gemini tool calling and manager decisions are verified.
 - **Performance gate failed:** no profile completed in the strict 1,500 ms / 100-profile run. The historical burst test completed 3/100, with 96 provider quota errors and one parser timeout. Passing code tests are not a passing provider SLA.
 
-See [architecture](docs/ARCHITECTURE.md), [performance evidence](docs/evidence/), and the [continuous-demo walkthrough](docs/DEMO_WALKTHROUGH.md).
+See [step-four status](docs/STEP_FOUR.md), [architecture](docs/ARCHITECTURE.md), [performance evidence](docs/evidence/), and the [continuous-demo walkthrough](docs/DEMO_WALKTHROUGH.md).
 
 ## Prerequisites
 
@@ -107,4 +107,4 @@ Submission creates durable background jobs. The agent uses actual Gemini functio
 - `docs/STEP_TWO_DESIGN.md`: visual direction and responsive layout.
 - `docs/STEP_ONE.md`: historical foundation/setup report and AI architecture plan.
 
-No code has been deployed or submitted. Production deployment requires a dedicated bucket-scoped workload role rather than the developer's broad local AWS project role.
+The source is published at [Ritik0712-ai/zelosify-contract-hiring](https://github.com/Ritik0712-ai/zelosify-contract-hiring). No production deployment or submission email has been completed. Production deployment requires a dedicated bucket-scoped workload role rather than the developer's broad local AWS project role.

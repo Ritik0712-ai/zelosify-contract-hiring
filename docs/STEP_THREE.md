@@ -1,6 +1,6 @@
 # Step three: AI recommendation workflow
 
-Status: the development workflow is implemented and live verified. **The assignment's performance acceptance gate is not met.** No public repository, deployment, recording or submission has been made.
+Status: the development workflow is implemented and live verified. **The assignment's performance acceptance gate is not met.** This report records step three. See [step four](STEP_FOUR.md) for the later public repository, verification and submission status.
 
 ## Requirements and implemented behavior
 
@@ -60,7 +60,7 @@ GEMINI_MIN_REQUEST_INTERVAL_MS=6000
 
 Six-second spacing reduces pressure on low provider quotas and counts toward processing time. It is process-local; multiple server instances would need a shared project-wide limiter. The database leases protect job ownership across instances, independently of provider pacing.
 
-Run the normal backend to start the worker. For isolated database tests, stop the background worker or run the API with `AI_WORKER_ENABLED=false`; tests exercise their own workers and disposable tenants.
+Run the normal backend to start the worker. Use `npm run test:local` for isolated database tests. It provisions the separate localhost `zelosify_test` database; the application worker cannot claim its disposable jobs.
 
 ```sh
 npm run build
@@ -76,7 +76,7 @@ npm run benchmark:ai
 ## Verified evidence and remaining acceptance gates
 
 - Backend and frontend production builds pass. Existing frontend image-optimization warnings remain in legacy components.
-- 45 automated tests pass, including deterministic boundaries, schemas, tool correction limits, deadlines, tenant/manager/vendor isolation, full submission-to-decision flow, concurrent claims, cancellation, lease recovery, persistence rollback and 100-profile processing with a scripted model transport. The scripted load test is not live Gemini performance evidence.
+- 50 automated tests now pass, including deterministic boundaries, schemas, tool correction limits, deadlines, tenant/manager/vendor isolation, full submission-to-decision flow, concurrent claims, cancellation, lease recovery, persistence rollback and 100-profile processing with a scripted model transport. The scripted load test is not live Gemini performance evidence.
 - Live Keycloak/S3 access checks pass. A real PDF and PPTX completed automatic Gemini analysis, their manager-only API results were checked, and a human decision endpoint succeeded. Manager retry was verified through the UI with a 202 response.
 - Live PDF processing: 35,257 ms; live PPTX processing: 35,607 ms with pacing. A retained PDF demonstration completed in 40,052 ms. An earlier unpaced S3 PPTX run took 13,212 ms. These are measured development results and **fail** the 1,500 ms target.
 - The initial 100-profile live stress run, concurrency two and no request pacing, completed three profiles and returned provider quota errors for 96 and a parsing timeout for one. Successful-only median was 17,847 ms and P95 was 31,367 ms. This is **not** a valid passing full-sample P95 and does not establish 100 successful live profiles.
