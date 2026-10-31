@@ -1,6 +1,6 @@
-# Step three: AI recommendation workflow
+# AI recommendation workflow
 
-Status: the development workflow is implemented and live verified. **The assignment's performance acceptance gate is not met.** This report records step three. See [step four](STEP_FOUR.md) for the later public repository, verification and submission status.
+Status: the development workflow is implemented and live verified. **The assignment's performance acceptance gate is not met.** See [verification and submission status](STEP_FOUR.md) for the public repository, demo and current acceptance gaps.
 
 ## Requirements and implemented behavior
 
@@ -50,7 +50,7 @@ Vendors receive the safe profile projection with no recommendation fields, proce
 
 The committed `.env.example` defaults to the brief's strict `AI_PROCESSING_TIMEOUT_MS=1500`. This is an enforced timeout, not a claim that the live provider can complete within it.
 
-Ritik explicitly approved a longer local development timeout. His private ignored `.env` is owner-only (0600), with:
+Local provider verification uses a longer development timeout. Store these settings in an ignored `.env` with owner-only permissions (0600):
 
 ```dotenv
 AI_WORKER_ENABLED=true
@@ -81,7 +81,7 @@ npm run benchmark:ai
 - Live PDF processing: 35,257 ms; live PPTX processing: 35,607 ms with pacing. A retained PDF demonstration completed in 40,052 ms. An earlier unpaced S3 PPTX run took 13,212 ms. These are measured development results and **fail** the 1,500 ms target.
 - The initial 100-profile live stress run, concurrency two and no request pacing, completed three profiles and returned provider quota errors for 96 and a parsing timeout for one. Successful-only median was 17,847 ms and P95 was 31,367 ms. This is **not** a valid passing full-sample P95 and does not establish 100 successful live profiles.
 - The two-file live upload took 4,023 ms before returning. AI is asynchronous, but the existing multipart upload still waits for durable S3 writes and therefore also misses an absolute two-second HTTP requirement.
-- Backend production dependency audit reports zero vulnerabilities. No new AWS resources were created in this step; the previously approved development and log buckets remain.
+- Backend production dependency audit reports zero vulnerabilities. The existing development and access-log buckets are retained for local storage and logging.
 
 The remaining work before claiming assignment compliance is to resolve and re-verify the latency and provider-capacity gates. More quota can help complete a larger benchmark but does not itself guarantee a 1.5-second tool-agent run. Sensible next actions are to clarify the brief's timing boundary with Zelosify, reduce model round trips while retaining real tool choice, and benchmark any alternative provider/model against the same acceptance criteria. No provider plan or billing changes have been made.
 

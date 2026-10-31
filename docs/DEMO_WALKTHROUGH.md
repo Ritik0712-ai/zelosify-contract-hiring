@@ -18,6 +18,6 @@ Demo logins: `vendor.demo` and `manager.demo`. Their generated password is in th
 
 ## Published take
 
-[Manual UI demo (3 minutes 32.5 seconds)](https://github.com/Ritik0712-ai/zelosify-contract-hiring/releases/tag/demo-v1). The current file replaces the earlier automated walkthrough and is sourced from Ritik’s `Screen Recording 2026-11-01 at 00.51.27.mov`. The original MOV is preserved locally; the published MP4 copies its encoded video stream unchanged. No cuts or speed changes were added, and there is no audio track. Verification metadata is in `docs/evidence/demo-verification.json`.
+[Manual UI demo (3 minutes 32.5 seconds)](https://github.com/Ritik0712-ai/zelosify-contract-hiring/releases/tag/demo-v1). Source recording: `Screen Recording 2026-11-01 at 00.51.27.mov`. The original MOV is preserved locally; the published MP4 copies its encoded video stream unchanged. No cuts or speed changes were added, and there is no audio track. Verification metadata is in `docs/evidence/demo-verification.json`.
 
 The take shows vendor/manager sign-in, opening details and assignment scope, a PDF/PPTX upload, queued/running AI states and completed recommendations, PDF preview, manager shortlist/reject decisions and the vendor view after decisions. The sequence above remains a suggested comprehensive walkthrough. PPTX preview, soft-delete confirmation and dark-mode switching are separately verified features and are not claimed as coverage of this recording.

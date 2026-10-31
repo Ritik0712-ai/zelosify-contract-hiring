@@ -1,8 +1,8 @@
-# Step one: local foundation and implementation contract
+# Local foundation: historical verification
 
-Historical snapshot: step two is now implemented; see `docs/STEP_TWO.md` for current status.
+Historical snapshot recorded on 30 October 2026. See [current verification and submission status](STEP_FOUR.md) for the completed implementation and remaining acceptance gaps.
 
-Status: COMPLETE for the local foundation and implementation planning scope, verified 30 October 2026. The requested hiring module is not implemented yet.
+This record covers local foundation setup and implementation planning. The hiring module had not yet been implemented at the time of this verification.
 
 ## Local services
 
@@ -12,7 +12,7 @@ Status: COMPLETE for the local foundation and implementation planning scope, ver
 - PostgreSQL: localhost:5445, database `zelosify`
 - Docker Compose project: `zelosify-local`; volumes persist locally.
 - Demo logins: `vendor.demo` and `manager.demo`. The generated password is `LOCAL_DEMO_PASSWORD` in the private backend `.env`; never publish it.
-- Tenant: Bruce Wayne Corp (`bruce-wayne-corp`). Openings are part of step two.
+- Tenant: Bruce Wayne Corp (`bruce-wayne-corp`). Opening and profile implementation is documented in [the workflow report](STEP_TWO.md).
 
 ## Run locally
 
@@ -58,11 +58,11 @@ From the frontend: `npm run build`. Stop its development server before building,
 - Both buckets: Block Public Access enabled, ACLs disabled, versioning, SSE-S3, SSE-C blocked, HTTPS-only policies, ABAC enabled.
 - The log bucket does not log to itself, avoiding recursive logging.
 - Node's current AWS SDK uses the browser-login profile; no permanent access keys are required. Credentials remain outside the repository in the AWS-managed local cache.
-- User requested keeping both buckets for step two.
+- Both development buckets are retained for resume storage and access logging.
 - S3 read/write was checked using a disposable test object and its exact version was deleted afterward. Access-log delivery is asynchronous; configuration is verified, not guaranteed immediate delivery.
 - The local application currently uses the developer's broad AWS project role. A deployed backend must use a dedicated, bucket-scoped workload role.
 
-## Screens to implement in step two
+## Planned workflow screens at this verification stage
 
 | Screen | Data/actions | States |
 | --- | --- | --- |
@@ -110,7 +110,7 @@ Seed at least 12 diverse openings under Bruce Wayne Corp and link each to a mana
 7. Async worker processes submitted jobs; UI polls or subscribes to status. Replays use an idempotency key and cannot partially overwrite a result.
 8. Structured JSON logging for stage timings, errors and final score. Avoid raw resume text, passwords, cookies and tokens in logs.
 
-## Acceptance gates for later steps
+## Planned acceptance checks
 
 - Security: both roles; same-tenant different-vendor denial; different-manager denial; cross-tenant IDs and object keys; anonymous, malformed, expired and wrong-role tokens.
 - Files: multiple PDF/PPTX, MIME/content validation, preview, soft deletion, transaction rollback and stale upload cleanup.
@@ -122,10 +122,10 @@ Seed at least 12 diverse openings under Bruce Wayne Corp and link each to a mana
 
 1. The brief requires per-profile processing <= 1500ms and P95 < 2000ms. Tiny live function-call checks took 2321ms and 1535ms; async execution keeps HTTP/UI responsive but does not prove processing SLA compliance. Clarify whether timings include S3 retrieval, parsing, queue time and model calls. Real 100-profile timing is still required.
 2. `requiredSkills` is absent from the sample Opening model although scoring requires it. Proposed additional field is documented above; location/work-mode semantics also need an explicit decision.
-3. A presign endpoint is required, but the brief also says no frontend direct S3 access. Proposed default: backend-mediated uploads and previews; ask whether browser-to-S3 presigned PUT is intended before implementing that alternative.
+3. A presign endpoint is required, but the brief also says no frontend direct S3 access. Proposed default: backend-mediated uploads and previews; browser-to-S3 presigned PUT would require clarification of that constraint.
 4. Free model quotas, cold starts, retries and provider saturation may conflict with the strict latency target. Do not fabricate a benchmark or silently substitute deterministic-only logic.
 5. Starter dependencies had known advisories. Compatible fixes and targeted development-tool updates are applied. Both dependency audits reported zero known findings after these fixes (a point-in-time audit, not a security guarantee). This setup is not a production-readiness claim.
-6. Authentication setup proves login and role gates, not the future opening/profile tenant-isolation rules. Those features do not exist yet.
+6. Authentication setup proves login and role gates, not the future opening/profile tenant-isolation rules. Those features were outside the scope of this foundation verification.
 
 ## Reference documentation
 
@@ -145,4 +145,4 @@ Seed at least 12 diverse openings under Bruce Wayne Corp and link each to a mana
 - S3: real SDK upload/read/delete succeeded using profile credentials. Bucket security and logging configuration independently read back through AWS.
 - Dependency audits: zero known findings for backend and frontend at verification time.
 - Secret files: owner-only permissions and ignored by Git. No credentials included in this report.
-- Changes remain local. No public repository, push, deployment, submission email or demo video was created.
+- At the time of this foundation verification, changes were local and no public repository, deployment, submission email or demo had been created. Current publication status is documented in [the final verification report](STEP_FOUR.md).

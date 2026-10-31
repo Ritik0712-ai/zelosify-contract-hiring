@@ -1,6 +1,6 @@
-# Step two completion report
+# Secure hiring workflow: historical verification
 
-Verified locally on 31 October 2026. This completes the secure hiring workflow scope. The AI recommendation agent and the assignment's processing SLA are still pending step three.
+Historical workflow verification recorded on 31 October 2026, before the AI-agent verification. See [AI workflow details](STEP_THREE.md) and [current verification status](STEP_FOUR.md) for the subsequent implementation and remaining performance gaps.
 
 ## Delivered workflow
 
@@ -21,7 +21,7 @@ Actor identity and tenant are loaded from the database only after JWT signature 
 
 Every new database mutation uses a Prisma transaction. A submission commits its entire batch and pending recommendation jobs together. Storage failure or a database write failure creates no partial profile batch. Written S3 versions are compensated on failure. Failed compensation retains exact object receipts on the upload intent for operational cleanup; a process crash still requires stale-upload reconciliation. This is not a distributed transaction across S3 and PostgreSQL.
 
-Soft deletion cancels pending recommendation jobs. Step three must continue checking profile deletion and scope when claiming or persisting jobs.
+Soft deletion cancels pending recommendation jobs. Recommendation workers must also check profile deletion and scope when claiming or persisting jobs.
 
 The `/profiles/presign` endpoint deliberately returns a backend upload authorization/path instead of sending the browser directly to S3. This resolves the brief's conflicting presign/direct-S3 wording in favor of backend-controlled file access. If Zelosify expects direct presigned browser PUTs, confirm that interpretation before changing the transport.
 
@@ -59,10 +59,10 @@ Vendor response selections explicitly omit AI fields, uploader details belonging
 - Dependency audits reported zero known findings for both applications at verification time.
 - Full JSX linting is now enabled. Minor inherited lint errors were corrected; older image optimization warnings remain outside the new workspace.
 
-Only fictional profiles were used. Two active demo submissions are left on the senior frontend opening: a shortlisted PDF and rejected PPTX. Automated HTTP test submissions are soft-deleted. All cloud resources remain private, in `ap-southeast-2`, and retained as requested for the next step.
+Only fictional profiles were used. Two active demo submissions are left on the senior frontend opening: a shortlisted PDF and rejected PPTX. Automated HTTP test submissions are soft-deleted. All cloud resources remain private, in `ap-southeast-2`, and retained for local development and access logging.
 
-## Next step
+## Scope at this verification stage
 
-Implement the real Gemini tool-calling agent, secure resume parsing/extraction/normalization, deterministic scoring tool, schema validation, bounded retries, prompt-injection defenses, token/stage timing logs, idempotent job processing and hiring-manager-only recommendation displays. Add the required 100-profile benchmark and virtualization behavior as part of the remaining interface/performance work.
+The Gemini tool-calling agent, secure parsing, scoring, schema validation, retries, prompt-injection safeguards, stage timing, idempotent processing, manager-only AI results, load benchmark and virtualization were verified separately. See [the AI workflow report](STEP_THREE.md) for that implementation and its measured limitations.
 
-Small provider checks in step one took about 1.5–2.3 seconds, so the 1500 ms per-profile and P95 under 2000 ms requirements remain unproven. Async HTTP/UI behavior alone does not satisfy those processing targets. No deployment, public repository push, submission email or final demo video has been performed.
+Initial provider checks took about 1.5–2.3 seconds. Async HTTP/UI behavior alone does not satisfy the processing targets; subsequent live verification confirmed that the performance gates are not met. Publication and submission status are documented in [the final verification report](STEP_FOUR.md).

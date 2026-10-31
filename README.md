@@ -11,7 +11,7 @@ A multi-tenant vendor-to-hiring-manager workflow built on the supplied Zelosify 
 - Real Keycloak, private S3, PDF/PPTX, Gemini tool calling and manager decisions are verified.
 - **Performance gate failed:** no profile completed in the strict 1,500 ms / 100-profile run. The historical burst test completed 3/100, with 96 provider quota errors and one parser timeout. Passing code tests are not a passing provider SLA.
 
-**[Watch/download the manual UI demo (3 min 32.5 sec)](https://github.com/Ritik0712-ai/zelosify-contract-hiring/releases/tag/demo-v1)** — Ritik’s new manual recording, with real Gemini results and fictional resumes.
+**[Watch/download the manual UI demo (3 min 32.5 sec)](https://github.com/Ritik0712-ai/zelosify-contract-hiring/releases/tag/demo-v1)** — A continuous manual walkthrough with real Gemini results and fictional resumes.
 
 See [step-four status](docs/STEP_FOUR.md), [architecture](docs/ARCHITECTURE.md), [performance evidence](docs/evidence/), and the [continuous-demo walkthrough](docs/DEMO_WALKTHROUGH.md).
 
@@ -97,7 +97,7 @@ Stop the development frontend before a production build because both use `.next`
 
 Submission creates durable background jobs. The agent uses actual Gemini function calls for parsing, evidence-backed extraction, normalization, deterministic matching/scoring and final validation. Only the assigned manager receives recommendation fields; vendors never receive them. The manager remains responsible for shortlist/reject decisions.
 
-`AI_PROCESSING_TIMEOUT_MS` falls back to the brief's strict 1500 ms when unset. The development setup script generates 60000 ms (explicitly approved by Ritik), with `GEMINI_MIN_REQUEST_INTERVAL_MS=6000` to reduce provider quota errors. These settings do not demonstrate compliance with the original speed requirement. Live paced PDF/PPTX analyses took about 35 seconds; the initial 100-profile stress run completed only three profiles. More quota alone does not guarantee the latency target.
+`AI_PROCESSING_TIMEOUT_MS` falls back to the brief's strict 1500 ms when unset. The development setup script generates 60000 ms for local provider verification, with `GEMINI_MIN_REQUEST_INTERVAL_MS=6000` to reduce provider quota errors. These settings do not demonstrate compliance with the original speed requirement. Live paced PDF/PPTX analyses took about 35 seconds; the initial 100-profile stress run completed only three profiles. More quota alone does not guarantee the latency target.
 
 `npm run benchmark:ai` explicitly calls the live provider on synthetic profiles and writes evidence to `.local/`. It stops on quota exhaustion. The automated 100-profile test uses a scripted model transport and must not be represented as a live provider benchmark. `npm run test:local` provisions the separate localhost `zelosify_test` database so the application worker cannot claim disposable test jobs. CI uses its own ephemeral PostgreSQL service.
 

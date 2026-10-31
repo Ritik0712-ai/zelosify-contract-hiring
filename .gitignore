@@ -146,5 +146,5 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
 
-# Machine-specific AWS assistant guidance remains local.
+# Local machine configuration.
 /AGENTS.md
